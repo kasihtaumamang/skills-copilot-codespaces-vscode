@@ -1,8 +1,8 @@
 import React from 'react';
 import './Navbar.css';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSun, FaMoon } from 'react-icons/fa';
 
-const Navbar = ({ scrolled }) => {
+const Navbar = ({ scrolled, theme, toggleTheme }) => {
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   const scrollToSection = (id) => {
@@ -28,8 +28,17 @@ const Navbar = ({ scrolled }) => {
           <a onClick={() => scrollToSection('contact')} className="nav-link">Contact</a>
         </div>
 
-        <div className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <FaTimes /> : <FaBars />}
+        <div className="nav-actions">
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <FaSun /> : <FaMoon />}
+          </button>
+          <div className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </div>
       </div>
     </nav>

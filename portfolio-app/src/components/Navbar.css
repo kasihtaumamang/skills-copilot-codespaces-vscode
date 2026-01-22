@@ -9,7 +9,7 @@
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
+  background: var(--navbar-bg);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(102, 126, 234, 0.1);
 }
@@ -41,6 +41,7 @@
   font-weight: 500;
   cursor: pointer;
   position: relative;
+  transition: color 0.3s ease;
 }
 
 .nav-link::after {
@@ -58,6 +59,34 @@
   width: 100%;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--gradient-1);
+  color: white;
+  transform: rotate(180deg);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
 .nav-toggle {
   display: none;
   font-size: 1.5rem;
@@ -71,7 +100,7 @@
     top: 70px;
     right: -100%;
     flex-direction: column;
-    background: rgba(10, 10, 10, 0.98);
+    background: var(--navbar-bg);
     width: 100%;
     padding: 40px 0;
     transition: right 0.3s ease;

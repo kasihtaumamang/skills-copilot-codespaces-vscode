@@ -10,6 +10,10 @@ import Footer from './components/Footer';
 
 function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    // Get theme from localStorage or default to 'dark'
+    return localStorage.getItem('theme') || 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,9 +24,19 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    // Apply theme to document and save to localStorage
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <div className="App">
-      <Navbar scrolled={scrolled} />
+      <Navbar scrolled={scrolled} theme={theme} toggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Skills />
