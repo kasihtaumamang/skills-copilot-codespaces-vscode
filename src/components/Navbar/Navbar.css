@@ -255,21 +255,7 @@
   }
 }
 
-/* Animation for theme transition */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.navbar {
-  animation: fadeIn 0.5s ease;
-}
+/* Animation for theme transition - removed to prevent unnecessary reflows */
 
 /* Focus styles for accessibility */
 .theme-toggle input:focus + .toggle-slider {
